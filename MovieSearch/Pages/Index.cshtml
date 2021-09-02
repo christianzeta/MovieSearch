@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="index-main">
+    <div class="left-box">
+
+    </div>
+
+    <div class="right-box">
+        <div class="search-area">
+            <form method="post" asp-page="/MovieInfo">
+                <input type="text" name="title" />
+                <button type="submit">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <p>Search for your favourite movies</p>
+        </div>
+    </div>
+</div>

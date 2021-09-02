@@ -1,0 +1,15 @@
+﻿@page
+@model MovieSearch.Pages.MovieInfoModel
+@{
+    ViewData["Title"] = "Movie Info";
+}
+
+<div class="MovieInfo-Main">
+    <div class="poster"></div>
+    <div class="movie-info"></div>
+</div>
+
+@if (Model.Movie != null)
+{
+    <p>@Model.Movie.Actors</p>
+}

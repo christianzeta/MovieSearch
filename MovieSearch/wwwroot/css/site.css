@@ -1,4 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 *{
     margin: 0;
@@ -92,6 +93,40 @@ button i{
     margin-top: 0.3em;
     font-size: 2em;
  }
+
+.movieinfo-main{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 90%;
+}
+
+.infobox {
+    width: 30%;
+    height: 70%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.infobox span{
+    font-weight: 600;
+}
+
+.plot-box{
+    font-size: 2em;
+    color: white;
+    background: black;
+    opacity: 0.3;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+.poster{
+    display: flex;
+    justify-content: center;
+}
 
 footer {
     height: 10%;

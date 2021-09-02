@@ -4,12 +4,30 @@
     ViewData["Title"] = "Movie Info";
 }
 
-<div class="MovieInfo-Main">
-    <div class="poster"></div>
-    <div class="movie-info"></div>
+<div class="movieinfo-main">
+    <div class="infobox">
+        <div class="poster">
+            <img src="@Model.Movie.Poster" alt="@Model.Movie.Title"/>
+        </div>
+    </div>
+    <div class="infobox">
+        <div class="text">
+            @foreach (var prop in Model.Movie.GetType().GetProperties())
+            {
+                @if (prop.Name == "Poster" || prop.Name == "Plot")
+                {
+                    continue;
+                }
+                else
+                {
+                    <p><span> @prop.Name: </span> @prop.GetValue(Model.Movie, null);</p>
+                }
+            }
+        </div>
+    </div>
+    <div class="infobox plot-box">
+        <p>"@Model.Movie.Plot"</p>
+    </div>
 </div>
 
-@if (Model.Movie != null)
-{
-    <p>@Model.Movie.Actors</p>
-}
+

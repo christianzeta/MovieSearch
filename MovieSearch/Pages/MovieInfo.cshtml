@@ -7,6 +7,7 @@
 <div class="movieinfo-main">
     @if (Model.Movie.Response == "True" && string.IsNullOrWhiteSpace(Model.ErrorString))
     {
+    <a class="home-btn btn-top"asp-page="/Index">Back</a>
         <div class="infobox">
             <div class="poster">
                 <img src="@Model.Movie.Poster" alt="@Model.Movie.Title" />

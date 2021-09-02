@@ -5,29 +5,47 @@
 }
 
 <div class="movieinfo-main">
-    <div class="infobox">
-        <div class="poster">
-            <img src="@Model.Movie.Poster" alt="@Model.Movie.Title"/>
+    @if (Model.Movie.Response == "True" && string.IsNullOrWhiteSpace(Model.ErrorString))
+    {
+        <div class="infobox">
+            <div class="poster">
+                <img src="@Model.Movie.Poster" alt="@Model.Movie.Title" />
+            </div>
         </div>
-    </div>
-    <div class="infobox">
-        <div class="text">
-            @foreach (var prop in Model.Movie.GetType().GetProperties())
-            {
-                @if (prop.Name == "Poster" || prop.Name == "Plot")
+        <div class="infobox">
+            <div class="text">
+                @foreach (var prop in Model.Movie.GetType().GetProperties())
                 {
-                    continue;
+                    @if (prop.Name == "Poster" || prop.Name == "Plot" || prop.Name == "Response")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        <p><span> @prop.Name: </span> @prop.GetValue(Model.Movie, null);</p>
+                    }
                 }
-                else
-                {
-                    <p><span> @prop.Name: </span> @prop.GetValue(Model.Movie, null);</p>
-                }
-            }
+            </div>
         </div>
-    </div>
-    <div class="infobox plot-box">
-        <p>"@Model.Movie.Plot"</p>
-    </div>
+        <div class="infobox plot-box">
+            <p>"@Model.Movie.Plot"</p>
+        </div>
+    }
+    else if (Model.Movie.Response == "False")
+    {
+        <div class="error-msg">
+            <p>This movie was not found..</p>
+            <a class="home-btn" asp-page="/index">Back</a>
+        </div>
+    }
+    else if (!string.IsNullOrWhiteSpace(Model.ErrorString))
+    {
+        <div class="error-msg">
+            <p>This application is not working right now</p>
+            <a class="home-btn" asp-page="/index">Back</a>
+        </div>
+    }
+
 </div>
 
 

@@ -20,6 +20,13 @@ main {
     background: #D3D3D3;
 }
 
+.home-btn{
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
 .index-main {
     width: 100%;
     height: 100%;

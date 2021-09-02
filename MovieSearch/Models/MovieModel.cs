@@ -29,6 +29,7 @@ namespace MovieSearch.Models
         public string DVD { get; set; }
         public string BoxOffice { get; set; }
         public string Production { get; set; }
+        public string Response { get; set; }
     }
 
     public class Rating

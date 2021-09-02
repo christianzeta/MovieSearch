@@ -17,6 +17,7 @@ namespace MovieSearch.Pages
         private readonly IHttpClientFactory _clientFactory;
 
         public MovieModel Movie { get; set; } = null;
+        public string ErrorString { get; set; }
 
         [BindProperty]
         public string Title { get; set; }
@@ -27,7 +28,7 @@ namespace MovieSearch.Pages
             _clientFactory = clientFactory;
         }
 
-        private static async Task<MovieModel> MakeRequest(IHttpClientFactory factory, string title)
+        private async Task<MovieModel> MakeRequest(IHttpClientFactory factory, string title)
         {
             var query = $"http://www.omdbapi.com/?apikey=78e51e6c&t={title}";
             var request = new HttpRequestMessage(HttpMethod.Get, query);
@@ -37,10 +38,12 @@ namespace MovieSearch.Pages
             if (response.IsSuccessStatusCode)
             {
                 MovieModel movie = await response.Content.ReadFromJsonAsync<MovieModel>();
+                ErrorString = null;
                 return movie;
             }
             else
             {
+                ErrorString = response.ReasonPhrase;
                 return null;
             }
         }
